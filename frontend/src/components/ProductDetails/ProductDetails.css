@@ -1,0 +1,241 @@
+/* General Container Styles */
+.product-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  padding-top: 125px;
+  /* font-family: Arial, sans-serif; */
+  background-color: #c8e2c5;
+  color: #333;
+  width: 100%;
+  max-width: 94.2%;
+  margin: 0 auto;
+}
+
+/* Product Card Styles */
+.product-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.product-card-content {
+  display: flex;
+  gap: 40px;
+}
+
+.product-image-container {
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.product-info-container {
+  flex: 1;
+  text-align: left;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  max-height: 500px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+h1 {
+  color: #2c3e50;
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+/* Loading and Error Styles */
+.loading,
+.error {
+  font-size: 18px;
+  color: #d32f2f;
+}
+
+/* Health Score Section */
+.health-score-section {
+  margin-top: 24px;
+}
+
+.health-score-section h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #2c3e50;
+}
+
+/* Progress Bar Styles */
+.progress-bar-container {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 20px;
+  margin-top: 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+/* Score Details Section */
+.score-details {
+  background-color: #f0f8ff;
+  border: 1px solid #dbe9f6;
+  padding: 16px;
+  margin-top: 24px;
+  border-radius: 12px;
+}
+
+.score-details p {
+  margin: 8px 0;
+}
+
+/* Nutrient Section */
+.nutrient-section {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.nutrient-section h2 {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.nutrient-item {
+  margin-bottom: 16px;
+}
+
+.nutrient-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.nutrient-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 12px;
+  display: inline-block;
+}
+
+.nutrient-text {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Details for Nutrient Warnings */
+details {
+  margin-top: 8px;
+  background-color: #fff7e6;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #ffa000;
+  width: 100%;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Nutritional Facts Table */
+.nutrition-section {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.nutrition-section h2 {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.nutrition-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.nutrition-table th,
+.nutrition-table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+}
+
+.nutrition-table th {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.nutrition-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.nutrition-table tr:hover {
+  background-color: #e0f7fa;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .product-details-container {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .product-card,
+  .nutrition-section,
+  .nutrient-section {
+    padding: 20px;
+  }
+
+  .product-card-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .product-image-container {
+    flex: 1 1 100%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .product-image {
+    max-width: 100%;
+  }
+
+  .nutrition-table th,
+  .nutrition-table td {
+    padding: 8px;
+    font-size: 14px;
+  }
+}

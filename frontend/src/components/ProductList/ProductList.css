@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* General Styling */
+.product-list {
+  text-align: center;
+  background-color: #c8e2c5;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  z-index: 1;
+  position: relative;
+}
+
+/* Position the product container below the initial viewport */
+.product-container {
+  margin-top: 33vh; /* Moves the product card below the viewport */
+  padding: 40px 5.5vw;
+  background-color: #fff;
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+  min-height: 50vh;
+  z-index: -1;
+  position: relative;
+}
+
+/* Add some spacing for better readability */
+.product-container .product-card {
+  margin-top: 20px;
+}
+
+/* Fix Navbar Overlapping Content */
+.header-section {
+  padding-top: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 40px 5.5vw 20px;
+}
+
+/* Background Image */
+.bg-img {
+  position: absolute;
+  left: -0.5%;
+  top: 4%;
+  width: 99.5vw;
+  height: 100vh;
+  z-index: 2;
+}
+
+/* Doritos Image */
+.doritos-img {
+  position: absolute;
+  left: 0%;
+  top: 12%;
+  width: 600px;
+  z-index: 4;
+}
+
+/* FOOD Text under Doritos */
+.food-text {
+  position: absolute;
+  left: 5%;
+  bottom: -80%;
+  font-size: 20rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  z-index: 3;
+  text-transform: uppercase;
+}
+
+/* Chips Image */
+.chips-img {
+  position: absolute;
+  right: 0%;
+  top: 40%;
+  width: 500px;
+  z-index: 3;
+}
+
+/* Search Section */
+.search-area {
+  text-align: center;
+  flex: 1;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15%;
+}
+
+/* Food Analysis Title */
+.title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 5px;
+  text-align: left;
+  width: 100%;
+  max-width: 550px;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 30px;
+  text-align: left;
+  width: 100%;
+  max-width: 550px;
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 750px;
+  margin-left: 200px;
+  position: relative;
+}
+
+/* Enlarged Search Input */
+.search-input {
+  width: 100%;
+  padding: 16px 60px 16px 20px;
+  font-size: 1.4rem;
+  border-radius: 50px;
+  border: none;
+  background-color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  outline: none;
+  color: black;
+}
+
+.search-button {
+  position: absolute;
+  right: 1%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0%;
+}
+
+/* Loading, Error, No Results */
+.loading,
+.error,
+.no-results {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 20px;
+}
+
+.error {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.product-card {
+  max-height: 10%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .doritos-img {
+    width: 120px;
+    left: -10px;
+  }
+
+  .chips-img {
+    width: 100px;
+    right: -10px;
+  }
+
+  .search-container {
+    max-width: 90%;
+  }
+
+  .search-input {
+    font-size: 1rem;
+    padding: 14px 50px 14px 15px;
+  }
+
+  .title,
+  .subtitle {
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .food-text {
+    font-size: 2rem;
+    left: 8%;
+    bottom: 5%;
+  }
+}

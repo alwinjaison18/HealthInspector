@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background-color: #d0eac2; /* Green background */
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-box {
+  display: flex;
+  width: 80%;
+  max-width: 1100px;
+  height: 550px;
+  background: white;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Section */
+.login-left {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  width: 160px;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 20px 0 10px;
+}
+
+p {
+  font-size: 14px;
+  color: #666;
+}
+
+.login-form {
+  margin-top: 20px;
+}
+
+.login-form label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+}
+
+/* ✅ FIXED: Properly aligned "Remember Me" & "Forgot Password?" */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #666;
+  width: 100%;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center; /* Ensures they are on the same level */
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.remember-me input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  vertical-align: middle; /* Keeps it aligned with text */
+  position: relative;
+  top: -1px; /* Slight adjustment to align perfectly */
+  margin-right: 8px; /* Adds a slight gap */
+}
+
+/* Forgot Password */
+.login-options a {
+  text-decoration: none;
+  color: #666;
+}
+
+/* Login Button */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* Signup Text */
+.signup-text {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.signup-text a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Right Section - Image */
+.login-right {
+  flex: 1;
+  background-color: #f8d5d3; /* Pink background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .login-box {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-box {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .login-left,
+  .login-right {
+    width: 100%;
+    height: 50%;
+  }
+
+  .background-image {
+    width: 100%;
+    height: auto;
+  }
+}

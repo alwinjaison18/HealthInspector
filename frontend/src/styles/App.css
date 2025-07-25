@@ -1,0 +1,44 @@
+/* General layout */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f0fff0;
+    /* Light green background */
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.app-container>* {
+    flex-grow: 1;
+}
+
+.page-container {
+    min-height: 50vh;
+    padding-top: 60px;
+}
+
+/* Transitions */
+.transition-effect {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    width: 100%;
+}
+
+.transition-effect.enter {
+    opacity: 1;
+}
+
+.transition-effect.exit {
+    opacity: 0;
+}
+
+/* Hero Section */
+.cta-buttons .cta {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cta-buttons .cta:hover {
+    transform: translateY(-3px);
+}
