@@ -25,7 +25,17 @@ export const getProductBySearch = async (query) => {
 
 export const getProductByBarcode = async (barcode) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/product/${barcode}`);
+    // In production: /.netlify/functions/product?barcode={barcode}
+    // In development: http://127.0.0.1:8000/product/{barcode}
+    const endpoint = import.meta.env.PROD
+      ? `${API_BASE_URL}/product`
+      : `${API_BASE_URL}/product/${barcode}`;
+    
+    const config = import.meta.env.PROD
+      ? { params: { barcode } }
+      : {};
+    
+    const response = await axios.get(endpoint, config);
     return response.data;
   } catch (error) {
     console.error("Error fetching product by barcode:", error);

@@ -1,4 +1,5 @@
 import requests
+import json
 
 def calculate_health_score(product_data):
     """Calculate health score based on product nutritional values."""
@@ -65,15 +66,22 @@ def handler(event, context):
         }
     
     try:
-        # Get barcode from path
-        path = event.get('path', '')
-        barcode = path.split('/')[-1] if path else None
+        # Get barcode from query parameters or path
+        query_params = event.get('queryStringParameters', {})
+        barcode = query_params.get('barcode', '')
         
+        # If not in query params, try to get from path
         if not barcode:
+            path = event.get('path', '')
+            path_parts = path.split('/')
+            if len(path_parts) > 0:
+                barcode = path_parts[-1]
+        
+        if not barcode or barcode == 'product':
             return {
                 'statusCode': 400,
                 'headers': headers,
-                'body': '{"error": "Barcode is required"}'
+                'body': json.dumps({"error": "Barcode is required"})
             }
         
         # Fetch from OpenFoodFacts
@@ -84,7 +92,7 @@ def handler(event, context):
             return {
                 'statusCode': 500,
                 'headers': headers,
-                'body': '{"error": "Error fetching data from OpenFoodFacts"}'
+                'body': json.dumps({"error": "Error fetching data from OpenFoodFacts"})
             }
         
         data = response.json()
@@ -93,7 +101,7 @@ def handler(event, context):
             return {
                 'statusCode': 404,
                 'headers': headers,
-                'body': '{"error": "Product not found"}'
+                'body': json.dumps({"error": "Product not found"})
             }
         
         product_data = data["product"]
@@ -123,12 +131,12 @@ def handler(event, context):
         return {
             'statusCode': 200,
             'headers': {**headers, 'Content-Type': 'application/json'},
-            'body': str(result).replace("'", '"')
+            'body': json.dumps(result)
         }
         
     except Exception as e:
         return {
             'statusCode': 500,
             'headers': headers,
-            'body': f'{{"error": "{str(e)}"}}'
+            'body': json.dumps({"error": str(e)})
         }
