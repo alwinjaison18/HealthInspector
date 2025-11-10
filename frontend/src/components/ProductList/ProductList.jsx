@@ -50,21 +50,23 @@ const ProductList = () => {
     setLoading(true);
     setError("");
     setProduct(null); // Clear previous product
-    
+
     console.log("Searching for barcode:", barcode);
-    
+
     try {
       const data = await getProductByBarcode(barcode);
       console.log("Received data:", data);
-      
+
       if (!data) {
-        throw new Error("Product not found. Please check the barcode and try again.");
+        throw new Error(
+          "Product not found. Please check the barcode and try again."
+        );
       }
-      
+
       if (data.error) {
         throw new Error(data.error);
       }
-      
+
       setProduct(data);
     } catch (err) {
       console.error("Error in fetchProductByBarcode:", err);
