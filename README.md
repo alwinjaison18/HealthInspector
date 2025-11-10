@@ -18,6 +18,7 @@ A food health analysis application built with React and FastAPI.
 ## Getting Started
 
 ### Backend
+
 ```bash
 cd backend
 pip install fastapi uvicorn requests
@@ -25,6 +26,7 @@ python main.py
 ```
 
 ### Frontend
+
 ```bash
 cd frontend
 npm install
@@ -32,6 +34,7 @@ npm run dev
 ```
 
 ## Access
+
 - Frontend: http://localhost:5173
 - Backend: http://localhost:8000
 - API Docs: http://localhost:8000/docs
