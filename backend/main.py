@@ -32,6 +32,8 @@ def extract_product_details(product_data):
         "nutritional_facts": {
             key: value for key, value in product_data.get("nutriments", {}).items()
         },
+        "nutrient_levels": product_data.get("nutrient_levels", {}),
+        "nutriments": product_data.get("nutriments", {}),
         "additives_tags": product_data.get("additives_tags", []),
         "keywords": product_data.get("generic_name", "N/A"),
         "health_score": health_score,

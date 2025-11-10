@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { getProductByBarcode } from "../../services/apiService";
 import "./ProductDetails.css";
 
 const ProductDetails = () => {
@@ -13,11 +14,10 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(
-          `http://127.0.0.1:8000/product/${barcode}`
-        );
-        if (!response.ok) throw new Error("Failed to fetch");
-        const data = await response.json();
+        const data = await getProductByBarcode(barcode);
+        if (!data) {
+          throw new Error("Failed to fetch product");
+        }
         console.log("API Response:", data);
         setProduct(data);
       } catch (error) {

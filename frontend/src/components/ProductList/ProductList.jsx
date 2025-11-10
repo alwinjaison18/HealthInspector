@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { getProductByBarcode } from "../../services/apiService";
 import "./ProductList.css";
 import doritosImage from "../../assets/images/doritto.png";
 import chipsImage from "../../assets/images/chip.png";
@@ -38,11 +39,10 @@ const ProductList = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch(`http://127.0.0.1:8000/product/${barcode}`);
-      if (!response.ok) {
+      const data = await getProductByBarcode(barcode);
+      if (!data) {
         throw new Error("Product not found.");
       }
-      const data = await response.json();
       setProduct(data);
     } catch (err) {
       setError(err.message);
