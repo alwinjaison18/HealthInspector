@@ -30,15 +30,25 @@ export const getProductByBarcode = async (barcode) => {
     const endpoint = import.meta.env.PROD
       ? `${API_BASE_URL}/product`
       : `${API_BASE_URL}/product/${barcode}`;
-    
-    const config = import.meta.env.PROD
-      ? { params: { barcode } }
-      : {};
-    
+
+    const config = import.meta.env.PROD ? { params: { barcode } } : {};
+
+    console.log("Fetching product:", {
+      barcode,
+      endpoint,
+      config,
+      isProd: import.meta.env.PROD,
+    });
+
     const response = await axios.get(endpoint, config);
+    console.log("Product response:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching product by barcode:", error);
+    if (error.response) {
+      console.error("Error response:", error.response.data);
+      console.error("Error status:", error.response.status);
+    }
     return null;
   }
 };

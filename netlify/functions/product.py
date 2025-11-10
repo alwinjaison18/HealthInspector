@@ -50,11 +50,14 @@ def calculate_health_score(product_data):
 def handler(event, context):
     """Netlify serverless function to get product by barcode."""
     
-    # Handle CORS
+    # Handle CORS and Cache Control
     headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
     }
     
     # Handle preflight request
@@ -67,8 +70,8 @@ def handler(event, context):
     
     try:
         # Get barcode from query parameters or path
-        query_params = event.get('queryStringParameters', {})
-        barcode = query_params.get('barcode', '')
+        query_params = event.get('queryStringParameters') or {}
+        barcode = query_params.get('barcode', '') if query_params else ''
         
         # If not in query params, try to get from path
         if not barcode:
@@ -77,11 +80,24 @@ def handler(event, context):
             if len(path_parts) > 0:
                 barcode = path_parts[-1]
         
-        if not barcode or barcode == 'product':
+        # Clean up barcode
+        if barcode and barcode != 'product':
+            barcode = barcode.strip()
+        else:
+            barcode = ''
+        
+        if not barcode:
             return {
                 'statusCode': 400,
                 'headers': headers,
-                'body': json.dumps({"error": "Barcode is required"})
+                'body': json.dumps({
+                    "error": "Barcode is required",
+                    "debug": {
+                        "query_params": query_params,
+                        "path": event.get('path', ''),
+                        "received_barcode": barcode
+                    }
+                })
             }
         
         # Fetch from OpenFoodFacts

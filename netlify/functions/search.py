@@ -50,11 +50,14 @@ def calculate_health_score(product_data):
 def handler(event, context):
     """Netlify serverless function to search products."""
     
-    # Handle CORS
+    # Handle CORS and Cache Control
     headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
     }
     
     # Handle preflight request

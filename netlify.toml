@@ -6,6 +6,13 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  PYTHON_VERSION = "3.8"
+
+[functions]
+  node_bundler = "esbuild"
+  
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
 
 # API route redirects
 [[redirects]]
