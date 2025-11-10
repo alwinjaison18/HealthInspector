@@ -16,6 +16,7 @@ const ProductList = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const productResultRef = React.useRef(null);
 
   // Adjust padding to prevent navbar overlap
   useEffect(() => {
@@ -32,6 +33,16 @@ const ProductList = () => {
     window.addEventListener("resize", adjustPadding);
     return () => window.removeEventListener("resize", adjustPadding);
   }, []);
+
+  // Scroll to product when it's loaded
+  useEffect(() => {
+    if (product && productResultRef.current) {
+      productResultRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [product]);
 
   const fetchProductByBarcode = async () => {
     if (!barcode.trim()) return; // Don't search if barcode is empty
@@ -91,7 +102,7 @@ const ProductList = () => {
         {loading && <p className="loading">Loading...</p>}
         {error && <p className="error">{error}</p>}
         {product ? (
-          <div className="product-container">
+          <div className="product-container" ref={productResultRef}>
             <ProductCard product={product} />
           </div>
         ) : (
