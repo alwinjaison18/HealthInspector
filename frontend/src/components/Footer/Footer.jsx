@@ -11,7 +11,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import logo from "../../assets/images/logo-white.png";
-import paymentLogo from "../../assets/images/payment.png";
+import paymentLogo from "../../assets/images/Payment.png";
 
 const Footer = () => {
   return (

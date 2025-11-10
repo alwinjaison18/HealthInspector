@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer";
 import "./ProductList.css";
 import doritosImage from "../../assets/images/doritto.png";
 import chipsImage from "../../assets/images/chip.png";
-import prodbg from "../../assets/images/prodbg.png";
+import prodbg from "../../assets/images/prodBg.png";
 import search from "../../assets/images/searchIc.png";
 
 const ProductList = () => {
